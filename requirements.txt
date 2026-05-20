@@ -1,0 +1,7 @@
+pymupdf
+pdfplumber
+chromadb
+sentence-transformers
+ollama
+faiss-cpu
+numpy

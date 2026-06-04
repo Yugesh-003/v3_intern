@@ -1,0 +1,33 @@
+# Streamlit RAG Evaluation Dashboard Dependencies
+
+# Core Framework
+streamlit==1.31.0
+
+# PDF Processing
+PyMuPDF==1.23.26
+pdfplumber==0.10.3
+
+# PyTorch (Windows compatible - install CPU version first to avoid DLL issues)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.1.0+cpu
+torchvision==0.16.0+cpu
+
+# ML and Embeddings (install after PyTorch)
+sentence-transformers==2.2.2
+chromadb==0.4.18
+
+# LLM Integration
+requests==2.31.0
+
+# Evaluation Libraries
+rouge-score==0.1.2
+evaluate==0.4.1
+datasets==2.14.6
+bert-score==0.3.13
+
+# Visualization
+plotly==5.18.0
+
+# Utilities
+numpy==1.24.3
+pandas==2.0.3

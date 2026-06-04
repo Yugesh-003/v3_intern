@@ -1,0 +1,54 @@
+{
+  "config": {
+    "query": "How much did AWS revenue grow year-over-year?",
+    "reference_summary": "The portfolio tracks a 95% confidence interval VaR that potential weekly downside variance will not exceed 2.1%. Current allocations show Domestic Large-Cap Equities over-allocated at 32.4% vs 30.0% target requiring trimming, while Emerging Markets Equities are under-allocated at 4.1% vs 5.0% target. The portfolio maintains a Beta of 0.88 against broader market indices with strategic rebalancing planned for Q2.",
+    "model": "gemma3:1b",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "chunk_size": 200,
+    "chunk_overlap": 30,
+    "top_k": 3
+  },
+  "extraction_stats": {
+    "pages": 14,
+    "tables": 14,
+    "images": 1,
+    "text_length": 944,
+    "chunks": 20
+  },
+  "summaries": {
+    "rag": {
+      "text": "Information not available in document.\n",
+      "latency": 2.9577126502990723,
+      "contexts_used": 3
+    },
+    "non_rag": {
+      "text": "Okay, here\u2019s a 150-200 word summary of the provided document, focusing on AWS revenue growth:\n\nAmazon.com\u2019s first-quarter financial results show significant growth in AWS revenue, rising approximately 22% year-over-year from Q1 2024 to Q1 2025. This growth was driven by a key commitment from OpenAI to consume approximately two gigawatts of Trainium capacity for its frontier models and advanced workloads, which began ramping in 2027.  Furthermore, Amazon unveiled Claude Opus 4.7, a more advanced coding model, and expanded availability to Bedrock, enhancing privacy and throughput.  Beyond AWS, the company announced plans for acquisition of Globalstar, integrating direct-to-device services into its network, and expanding coverage in Europe and Africa.  Amazon also extended mobile connectivity to Vodafone, Apple, and the DP World Tour.  Finally, the document highlights new customer agreements with Delta Air Lines, Vodafone, and the DP World Tour, demonstrating Amazon\u2019s strategic diversification.  Total revenue from AWS increased by approximately 22% year-over-year, reflecting the continued strength of this critical business segment.  This growth is underpinned by strategic investments and expansion initiatives across various product and service lines.",
+      "latency": 5.729268312454224,
+      "input_words": 4000
+    },
+    "multiviewpoint": {
+      "text": "Here are three different investment perspectives based solely on the provided context, with each taking a slightly different approach:\n\n**1. Conservative Perspective (Focus on Risk):**\n\n\u201cBased on the provided context, a conservative investment perspective would favor a cautious approach. The substantial emphasis on risks \u2013 including potential fluctuations in demand, competition, management of growth, and operational challenges \u2013 suggests a heightened risk profile. The \u2018Purchases of property and equipment, net of proceeds from sales and incentives\u2019 highlights significant investment expenditure, creating a substantial potential for unexpected costs and losses. While the positive indicators like net sales growth are present, the overall balance is weighted heavily toward potential downsides. We\u2019d likely recommend a lower weighting of Amazon\u2019s shares, prioritizing a more conservative allocation to mitigate this risk.\u201d\n\n**2. Optimistic Perspective (Focus on Growth):**\n\n\u201cAn optimistic investment perspective would emphasize the significant growth opportunities presented by Amazon. The provided data demonstrates strong net sales growth across various segments \u2013 North America, International, AWS, and Consolidated \u2013 indicating a robust business model.  The positive cash flow and income demonstrates financial stability. The \u2018Purchases of property and equipment, net of proceeds from sales and incentives\u2019 highlights efficient operations. The company is investing heavily in new business opportunities, which could further accelerate growth. Given these factors, a higher allocation to Amazon\u2019s shares would be warranted, as the potential for future growth and profitability presents a compelling investment opportunity.\u201d\n\n**3. Balanced Perspective (Focus on Opportunity & Risk):**\n\n\u201cA balanced investment perspective would acknowledge both the potential benefits and risks associated with Amazon\u2019s business. The provided context highlights significant net sales growth, positive cash flow, and income. However, the substantial investment in new business and the \u2018Purchases of property and equipment, net of proceeds from sales and incentives\u2019 indicates a considerable risk.  The information regarding \u2018Other risks and uncertainties\u2019 underscores a need for careful monitoring and diversification.  Therefore, a moderate allocation to Amazon's shares would be appropriate, aiming to capitalize on the company\u2019s growth potential while managing risk through diligent due diligence and ongoing assessment of its underlying business.\u201d\n\n---\n\n**Disclaimer:** *These perspectives are based solely on the provided text and are intended as illustrative examples. Investment decisions should always be made based on thorough research, financial analysis, and a comprehensive understanding of market conditions.*",
+      "latency": 8.001163005828857
+    }
+  },
+  "metrics": {
+    "rag": {
+      "rouge1_f1": 0.0273972602739726,
+      "rouge2_f1": 0.0,
+      "rougeL_f1": 0.0273972602739726,
+      "bleu": 0.0,
+      "bertscore_f1": 0.817661464214325,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0,
+      "context_recall": 0.85,
+      "context_precision": 0.8
+    },
+    "non_rag": {
+      "rouge1_f1": 0.0933852140077821,
+      "rouge2_f1": 0.00784313725490196,
+      "rougeL_f1": 0.062256809338521395,
+      "bleu": 0.0,
+      "bertscore_f1": 0.7986325025558472
+    }
+  }
+}

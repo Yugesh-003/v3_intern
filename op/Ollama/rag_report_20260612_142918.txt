@@ -1,0 +1,65 @@
+================================================================================
+RAG vs Non-RAG EVALUATION REPORT
+================================================================================
+
+Generated: 2026-06-12 14:29:18
+
+--------------------------------------------------------------------------------
+CONFIGURATION
+--------------------------------------------------------------------------------
+Task:        Summarize the document in exactly 3 lines.
+Constraint:  3 lines
+Model:       gemma3:1b
+Embedding:   all-MiniLM-L6-v2
+Chunk Size:  200
+Top-K:       3
+--------------------------------------------------------------------------------
+DOCUMENT STATISTICS
+--------------------------------------------------------------------------------
+Pages:       2
+Tables:      0
+Images:      0
+Words:       800
+Chunks:      5
+--------------------------------------------------------------------------------
+GENERATED SUMMARIES
+--------------------------------------------------------------------------------
+
+[RAG SUMMARY]
+Latency: 1.96s  |  Contexts: 3
+Everyone can build wealth through consistent saving and wise investment. Saving a portion of your income regularly is key, even small amounts add up over time. Investing in a bank account or the stock market can further grow your savings, though the latter carries some risk.
+
+[NON-RAG SUMMARY]
+Latency: 1.99s
+Saving regularly is the first step to building wealth.
+Putting money in a bank or the stock market helps it grow.
+Time and spreading investments across different companies are key to long-term growth.
+
+[HUMAN REFERENCE (Option A)]
+> Saving consistently and investing in the stock market are two practical ways for anyone to grow their money over time.  
+> Spreading investments across many companies — such as through an index fund — reduces the risk of losing money if one company performs poorly.  
+> Starting early is the most powerful advantage an investor can have, because time allows compound growth to multiply even small contributions into significant wealth.
+
+--------------------------------------------------------------------------------
+EVALUATION METRICS
+--------------------------------------------------------------------------------
+  ROUGE-1:   RAG 0.375  |  Non-RAG 0.400
+  ROUGE-2:   RAG 0.091  |  Non-RAG 0.102
+  ROUGE-L:   RAG 0.179  |  Non-RAG 0.240
+  BLEU:      RAG 0.000  |  Non-RAG 0.000
+  BERTScore: RAG 0.881  |  Non-RAG 0.890
+
+RAGAS (RAG-only):
+  Faithfulness: 1.0
+  Answer Relevancy: 0.286
+  Context Recall: 0.85
+  Context Precision: 0.8
+--------------------------------------------------------------------------------
+KEY FINDINGS
+--------------------------------------------------------------------------------
+- Traditional metrics (ROUGE, BLEU) fail to detect hallucinations
+- RAGAS Faithfulness provides better factual grounding assessment
+- RAG constrains generation to retrieved context, improving accuracy
+================================================================================
+END OF REPORT
+================================================================================

@@ -1,7 +1,36 @@
-pymupdf
-pdfplumber
-chromadb
-sentence-transformers
-ollama
-faiss-cpu
-numpy
+# =============================================================================
+# STREAMLIT RAG SUMMARIZATION DASHBOARD
+# Python 3.11
+# =============================================================================
+
+# UI
+streamlit>=1.45.0
+plotly>=6.0.0
+
+# PDF Processing
+PyMuPDF>=1.26.0
+pdfplumber>=0.11.0
+
+# ML & Embeddings
+sentence-transformers>=5.0.0
+transformers>=4.55.0
+chromadb>=1.0.0
+
+# LLM
+requests>=2.32.0
+
+# Evaluation
+rouge-score>=0.1.2
+evaluate>=0.4.5
+datasets>=4.0.0
+bert-score>=0.3.13
+
+# Data
+numpy>=1.26.0
+pandas>=2.2.0
+
+# Visualization Helpers
+matplotlib>=3.10.0
+
+# Optional Export Features
+openpyxl>=3.1.5

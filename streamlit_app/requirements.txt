@@ -18,6 +18,7 @@ chromadb==0.4.18
 
 # LLM Integration
 requests==2.31.0
+boto3>=1.34.0          # AWS Bedrock support
 
 # Evaluation Libraries
 rouge-score==0.1.2

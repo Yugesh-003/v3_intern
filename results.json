@@ -1,51 +1,51 @@
 {
   "config": {
-    "query": "What is the VaR confidence interval and current portfolio allocation strategy?",
-    "reference_summary": "The portfolio tracks a 95% confidence interval VaR that potential weekly downside variance will not exceed 2.1%. Current allocations show Domestic Large-Cap Equities over-allocated at 32.4% vs 30.0% target requiring trimming, while Emerging Markets Equities are under-allocated at 4.1% vs 5.0% target. The portfolio maintains a Beta of 0.88 against broader market indices with strategic rebalancing planned for Q2.",
+    "task": "summarize the purpose of RAG in exactly 3 lines",
+    "summary_constraint": "summarize the purpose of RAG in exactly 3 lines",
+    "reference_summary": "RAG improves AI response quality by retrieving relevant information \nfrom external documents before generating an answer, reducing hallucination. \nIn education, it helps students and teachers quickly access precise \ninformation from study materials like textbooks and research papers.",
     "model": "gemma3:1b",
-    "embedding_model": "all-MiniLM-L6-v2"
+    "embedding_model": "all-MiniLM-L6-v2",
+    "chunk_size": 80,
+    "chunk_overlap": 20,
+    "top_k": 3
   },
   "extraction_stats": {
-    "pages": 4,
+    "pages": 1,
     "tables": 1,
     "images": 0,
-    "text_length": 764,
+    "text_length": 274,
     "chunks": 6
   },
   "summaries": {
     "rag": {
-      "text": "The VaR confidence interval for the consolidated growth models currently hovers within historical norms, tracking a 95% confidence interval that potential weekly downside variance will not exceed 2.1%. Currently, client portfolios are allocated a value-at-risk (VaR) of 0.88, ensuring that client portfolios absorb less downside shock during market corrections while maintaining active upside capture ratios.",
-      "latency": 10.127532958984375,
+      "text": "RAG is a method used in AI to improve answer generation by providing contextual information. The system retrieves relevant documents before responding to questions, making responses more accurate and efficient for students and educators alike.  Document retrieval enhances the responsiveness of language models, providing accurate answers with access to updated resources. Furthermore, RAG aids in understanding complex material effectively within educational contexts.",
+      "latency": 3.8507862091064453,
       "contexts_used": 3
     },
     "non_rag": {
-      "text": "Here\u2019s a 150-200 word summary, incorporating the key information from the document:\n\nThe quarterly review indicates a resilient, yet dynamic, capital market environment for Apex Global Wealth Management Group. Our core asset allocation strategy, prioritizing high-quality equities and fixed-income, has prioritized a diversified approach, maintaining institutional yield cushions against potential market corrections. The current VaR confidence interval for the consolidated growth model is 95% (within historical norms), indicating a conservative risk profile.  Currently, the portfolio is allocated to a mix of equity and fixed-income, with a strategic weighting towards enterprise technology, healthcare, and automated industrial supply networks, and a more cautious approach to consumer discretionary sectors.  The portfolio\u2019s volatility model is calibrated to 0.88, ensuring defensive guardrails while maintaining a focus on capital appreciation.  Moving forward, the focus will be on disciplined portfolio management, risk avoidance, and proactive adjustments based on market conditions.  Clients are advised to maintain liquidity reserves and remain vigilant regarding economic shifts.  The document also highlights a thorough risk assessment of specialized tech sectors through a phased profit-taking procedure.",
-      "latency": 5.123478651046753,
-      "input_words": 4000
-    },
-    "multiviewpoint": {
-      "text": "Here are three different investment perspectives, based solely on the provided context, for the provided document:\n\n**1. Conservative Perspective (Focus: Risk Mitigation)**\n\n\u201cBased on the current economic climate and the projected volatility in market segments, we recommend a Bear Case strategy. The rapid expansion of specialized tech sectors, coupled with the systematic volatility of market corrections, necessitates a cautious approach. Prioritize defensive assets \u2013 like established companies and stable sectors \u2013 and maintain a high level of liquidity to weather potential downturns.  We\u2019ll continue to allocate capital to cash reserves and selective emerging market funds, minimizing exposure to volatile assets.\u201d\n\n**2. Optimistic Perspective (Focus: Growth Potential)**\n\n\u201cConsidering the positive indicators \u2013 such as the robust growth of enterprise technology, healthcare, and automated industrial supply networks \u2013 we maintain an optimistic outlook.  The value-at-risk parameters suggest a manageable level of risk, allowing for potential upside capture through strategic allocation.  We will continue to actively pursue opportunities within our focused portfolio of sectors, focusing on long-term value creation while acknowledging the inherent uncertainties in the market.\u201d\n\n**3. Neutral Perspective (Focus: Balancing Opportunities and Risks)**\n\n\u201cThe document highlights a balanced approach requiring careful management of risk. The current market dynamics \u2013 particularly the volatility in bond markets, the Beta benchmarks, and the projected shifts in emerging markets \u2013 necessitate a measured strategy.  We\u2019ll continue to monitor the portfolio\u2019s allocation across various sectors, striving to maximize long-term growth while mitigating potential losses through a prudent risk-adjusted approach.  Ongoing stress-testing and adjustments will remain crucial, ensuring both portfolio stability and continued growth.\u201d \n\n---\n\n**Disclaimer:**  As noted in the legal disclaimer, past performance is not indicative of future results.",
-      "latency": 6.36305570602417
+      "text": "The document explains how Retrieval-Augmented Generating (RAG) helps AI models with language understanding improve by retrieving relevant information before answering questions.| It\u2019s beneficial in education due to the potential for large study materials and improved answer quality ensuring more efficient learning for students.| Proper quality of educational resources is key to successful RAG implementation because inaccuracies could misrepresent answers|",
+      "latency": 3.804065227508545,
+      "input_words": 274
     }
   },
   "metrics": {
     "rag": {
-      "rouge1_f1": 0.5039370078740157,
-      "rouge2_f1": 0.25599999999999995,
-      "rougeL_f1": 0.3779527559055118,
-      "bleu": 0.21974515020323163,
-      "bertscore_f1": 0.8817962408065796,
+      "rouge1_f1": 0.3838383838383838,
+      "rouge2_f1": 0.061855670103092786,
+      "rougeL_f1": 0.22222222222222224,
+      "bleu": 0.0,
+      "bertscore_f1": 0.886186420917511,
       "faithfulness": 0.75,
-      "answer_relevancy": 0.364,
+      "answer_relevancy": 0.444,
       "context_recall": 0.85,
       "context_precision": 0.8
     },
     "non_rag": {
-      "rouge1_f1": 0.24096385542168672,
-      "rouge2_f1": 0.040485829959514164,
-      "rougeL_f1": 0.11244979919678716,
-      "bleu": 0.0,
-      "bertscore_f1": 0.8385492563247681
+      "rouge1_f1": 0.4081632653061225,
+      "rouge2_f1": 0.10416666666666667,
+      "rougeL_f1": 0.2653061224489796,
+      "bleu": 0.05295296385067158,
+      "bertscore_f1": 0.8631006479263306
     }
   }
 }

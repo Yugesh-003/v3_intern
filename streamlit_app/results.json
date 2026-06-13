@@ -18,34 +18,34 @@
   },
   "summaries": {
     "rag": {
-      "text": "Write EXACTLY 3 lines:\nLine 1: Save regularly; it is crucial for building wealth.\nLine 2: Investing wisely through accounts like savings or bank deposits allows growth.\nLine 3: Even small contributions make a significant difference over time.",
-      "latency": 3.714921474456787,
+      "text": "Learning from financial mistakes is crucial for building wealth.\nSaving regularly and investing in a bank or the stock market are key steps.\nPatience, consistency, and discipline are essential for long-term wealth growth.",
+      "latency": 3.825225591659546,
       "contexts_used": 3
     },
     "non_rag": {
-      "text": "Many strategies can be applied to grow one\u2019s net worth. These include consistent saving each month \u2013 even a small amount helps over time \u2013 strategic investment in a bank account or stock market funds like index funds and diversified portfolio building across various assets. Focusing on time\u2014allowing investments to mature through compounding\u2014is also vital, along with having clear financial goals\u2014such as retirement or homeownership \u2014to enhance decision-making. Crucially, embracing gradual action is key \u2013 starting small consistently increases the likelihood of substantial wealth accumulation.",
-      "latency": 4.183084726333618,
+      "text": "Saving a portion of your income regularly is crucial for building wealth over time.\nUtilizing bank accounts and the stock market, including index funds, can help your money grow.\nStarting early, having clear financial goals, and learning from mistakes are key to successful wealth accumulation.",
+      "latency": 1.0044498443603516,
       "input_words": 800
     }
   },
   "metrics": {
     "rag": {
-      "rouge1_f1": 0.2692307692307693,
-      "rouge2_f1": 0.058823529411764705,
-      "rougeL_f1": 0.19230769230769232,
-      "bleu": 0.0,
-      "bertscore_f1": 0.8692803978919983,
-      "faithfulness": 0.667,
+      "rouge1_f1": 0.25999999999999995,
+      "rouge2_f1": 0.12244897959183673,
+      "rougeL_f1": 0.19999999999999998,
+      "bleu": 0.042647489970939874,
+      "bertscore_f1": 0.8819252848625183,
+      "faithfulness": 1.0,
       "answer_relevancy": 0.286,
       "context_recall": 0.85,
       "context_precision": 0.8
     },
     "non_rag": {
-      "rouge1_f1": 0.4313725490196078,
-      "rouge2_f1": 0.09271523178807947,
-      "rougeL_f1": 0.16993464052287585,
+      "rouge1_f1": 0.3783783783783784,
+      "rouge2_f1": 0.09174311926605505,
+      "rougeL_f1": 0.2342342342342342,
       "bleu": 0.0,
-      "bertscore_f1": 0.8653236031532288
+      "bertscore_f1": 0.8894988894462585
     }
   }
 }

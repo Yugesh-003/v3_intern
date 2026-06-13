@@ -433,35 +433,93 @@ with st.sidebar:
             value=3, step=1, help="Number of chunks to retrieve for RAG"
         )
 
-    with st.expander("LLM Configuration", expanded=False):
-        ollama_url = st.text_input(
-            "Ollama URL",
-            value="http://localhost:11434/api/generate",
-            help="Ollama API endpoint"
-        )
-        ollama_model = st.text_input(
-            "Ollama Model",
-            value="gemma3:1b",
-            help="Model name in Ollama"
-        )
-        if st.button("🔌 Test Ollama Connection", use_container_width=True):
-            import requests
-            try:
-                response = requests.get(
-                    ollama_url.replace("/api/generate", "/api/tags"), timeout=5
-                )
-                if response.status_code == 200:
-                    st.success("✅ Ollama is running!")
-                else:
-                    st.error(f"❌ Ollama responded with status {response.status_code}")
-            except Exception as e:
-                st.error(f"❌ Cannot connect to Ollama: {str(e)}")
+    with st.expander("🤖 LLM Provider & Configuration", expanded=True):
 
-    with st.expander("Embedding Configuration", expanded=False):
+        llm_provider = st.radio(
+            "LLM Provider",
+            options=["Ollama (Local)", "AWS Bedrock"],
+            horizontal=True,
+            help="Choose which LLM backend to use for summarization."
+        )
+
+        if llm_provider == "Ollama (Local)":
+            st.markdown("**Ollama Settings**")
+            ollama_url = st.text_input(
+                "Ollama URL",
+                value="http://localhost:11434/api/generate",
+                help="Ollama API endpoint"
+            )
+            ollama_model = st.text_input(
+                "Ollama Model",
+                value="gemma3:1b",
+                help="Model name in Ollama (e.g. gemma3:1b, llama3, mistral)"
+            )
+            if st.button("🔌 Test Ollama Connection", use_container_width=True):
+                import requests as _req
+                try:
+                    r = _req.get(ollama_url.replace("/api/generate", "/api/tags"), timeout=5)
+                    if r.status_code == 200:
+                        models = [m["name"] for m in r.json().get("models", [])]
+                        st.success(f"✅ Ollama running · {len(models)} model(s) available")
+                    else:
+                        st.error(f"❌ Status {r.status_code}")
+                except Exception as e:
+                    st.error(f"❌ Cannot connect: {e}")
+            bedrock_region    = "us-east-1"
+            bedrock_model_id  = "amazon.nova-lite-v1:0"
+            provider_key      = "ollama"
+
+        else:  # AWS Bedrock
+            st.markdown("**AWS Bedrock — Converse API**")
+            st.caption("🔐 Auth via `aws configure` — no credentials needed here.")
+
+            BEDROCK_MODELS = {
+                "Amazon Nova Lite  (fast · cheap)":    "amazon.nova-lite-v1:0",
+                "Amazon Nova Micro (fastest · cheapest)": "amazon.nova-micro-v1:0",
+                "Amazon Nova Pro   (best quality)":    "amazon.nova-pro-v1:0",
+                "Claude 3 Haiku    (needs use-case approval)": "anthropic.claude-3-haiku-20240307-v1:0",
+                "Mistral 7B Instruct": "mistral.mistral-7b-instruct-v0:2",
+            }
+            selected_model_label = st.selectbox(
+                "Bedrock Model",
+                options=list(BEDROCK_MODELS.keys()),
+                index=0,
+                help="All models use the Converse API — no format changes needed."
+            )
+            bedrock_model_id = BEDROCK_MODELS[selected_model_label]
+            st.caption(f"🆔 `{bedrock_model_id}`")
+
+            bedrock_region = st.text_input(
+                "AWS Region",
+                value="us-east-1",
+                help="AWS region where Bedrock is enabled (e.g. us-east-1, ap-southeast-1)"
+            )
+
+            if st.button("🔌 Test Bedrock Connection", use_container_width=True):
+                try:
+                    import boto3 as _boto3
+                    c = _boto3.client("bedrock-runtime", region_name=bedrock_region)
+                    # Cheapest possible test call
+                    r = c.converse(
+                        modelId=bedrock_model_id,
+                        messages=[{"role": "user", "content": [{"text": "hi"}]}],
+                        inferenceConfig={"maxTokens": 5},
+                    )
+                    st.success(f"✅ Connected · `{bedrock_model_id}` is responding")
+                except Exception as e:
+                    st.error(f"❌ {e}")
+
+            ollama_url   = "http://localhost:11434/api/generate"
+            ollama_model = "gemma3:1b"
+            provider_key = "bedrock"
+
+
+
+    with st.expander("🧠 Embedding Configuration", expanded=False):
         embedding_model = st.text_input(
             "Embedding Model",
             value="all-MiniLM-L6-v2",
-            help="SentenceTransformer model name"
+            help="SentenceTransformer model — always runs locally, unaffected by LLM provider."
         )
 
     st.markdown("---")
@@ -489,9 +547,12 @@ with st.sidebar:
             CHUNK_SIZE=chunk_size,
             CHUNK_OVERLAP=chunk_overlap,
             TOP_K=top_k,
+            LLM_PROVIDER=provider_key,
             OLLAMA_URL=ollama_url,
             OLLAMA_MODEL=ollama_model,
-            EMBEDDING_MODEL=embedding_model
+            BEDROCK_MODEL_ID=bedrock_model_id if provider_key == "bedrock" else "amazon.nova-lite-v1:0",
+            BEDROCK_REGION=bedrock_region,
+            EMBEDDING_MODEL=embedding_model,
         )
         with st.spinner("🔄 Running RAG Pipeline..."):
             try:
